@@ -9,6 +9,7 @@
 import argparse
 import asyncio
 import logging
+import sys
 from typing import Callable, Dict, Optional
 
 import httpx
@@ -164,6 +165,16 @@ def main() -> None:
         default=5,
         help="轮询奖励码的间隔（秒，默认 5）",
     )
+    if len(sys.argv) == 1:
+        parser.print_help()
+        print(
+            "\n示例:\n"
+            "  python local_runner.py --service spotify --url 'https://services.sheerid.com/verify/...'")
+        print(
+            "  python local_runner.py --service bolt --url 'https://services.sheerid.com/...' --poll-code"
+        )
+        return
+
     args = parser.parse_args()
 
     if args.service == "bolt":
