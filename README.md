@@ -258,6 +258,8 @@ tgbot-verify/
 | `MYSQL_USER` | ✅ | MySQL 用户名 | - |
 | `MYSQL_PASSWORD` | ✅ | MySQL 密码 | - |
 | `MYSQL_DATABASE` | ✅ | 数据库名称 | tgbot_verify |
+| `SAVE_STUDENT_CARD` | ❌ | 是否在本地保存生成的学生证 PNG（`true/false`） | false |
+| `STUDENT_CARD_DIR` | ❌ | 学生证 PNG 保存目录 | student_cards |
 
 ### 积分配置
 

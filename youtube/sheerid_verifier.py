@@ -8,6 +8,7 @@ from typing import Dict, Optional, Tuple
 from . import config
 from .name_generator import NameGenerator, generate_email, generate_birth_date
 from .img_generator import generate_psu_email, generate_image
+from utils.card_saver import maybe_save_student_card
 
 # 配置日志
 logging.basicConfig(
@@ -116,6 +117,7 @@ class SheerIDVerifier:
             img_data = generate_image(first_name, last_name, school_id)
             file_size = len(img_data)
             logger.info(f"✅ PNG 大小: {file_size / 1024:.2f}KB")
+            maybe_save_student_card(img_data, self.verification_id, "youtube")
 
             # 提交学生信息
             logger.info("步骤 2/4: 提交学生信息...")
