@@ -193,6 +193,25 @@ docker run -d \
    - 审核通常在几分钟内完成
    - 成功后会返回跳转链接
 
+### 🖥️ 本地 CLI 运行（无需 Telegram）
+
+如果只想在本地执行完整流程而不通过 Telegram 机器人，可以直接使用仓库根目录下的 `local_runner.py`：
+
+```bash
+python local_runner.py --service <服务标识> --url "<SheerID 链接>" [--poll-code]
+```
+
+- `--service` 支持：`gemini`、`k12`、`spotify`、`bolt`、`youtube`
+- `--url` 为浏览器中复制的完整 SheerID 认证链接
+- `--poll-code` 仅用于 `bolt`，表示在提交后额外轮询获取 reward code（默认等待 20 秒）
+
+示例：
+
+```bash
+python local_runner.py --service spotify --url "https://services.sheerid.com/verify/..."
+python local_runner.py --service bolt --url "https://services.sheerid.com/..." --poll-code
+```
+
 ---
 
 ## 📁 项目结构
@@ -239,6 +258,8 @@ tgbot-verify/
 | `MYSQL_USER` | ✅ | MySQL 用户名 | - |
 | `MYSQL_PASSWORD` | ✅ | MySQL 密码 | - |
 | `MYSQL_DATABASE` | ✅ | 数据库名称 | tgbot_verify |
+| `SAVE_STUDENT_CARD` | ❌ | 是否在本地保存生成的学生证 PNG（`true/false`） | false |
+| `STUDENT_CARD_DIR` | ❌ | 学生证 PNG 保存目录 | student_cards |
 
 ### 积分配置
 
